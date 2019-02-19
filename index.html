@@ -1,18 +1,63 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Vuetify Parallax Starter</title>
+  <title>1504 Robotics</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href='https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons' rel="stylesheet">
   <link href="https://unpkg.com/vuetify/dist/vuetify.min.css" rel="stylesheet">
 </head>
+<style>
+    a {
+      text-decoration: none;
+    }
+    /* unvisited link */
+    a:link {
+      color: white;
+    }
+    
+    /* visited link */
+    a:visited {
+      color: white;
+    }
+    
+    /* mouse over link */
+    a:hover {
+      color: white;
+    }
+    
+    /* selected link */
+    a:active {
+      color: white;
+    }
+    </style>
 <body>
  <div id="app">
    <v-app light>
     <v-content>
       <section>
         <v-parallax src="assets/black.png">
+          <v-navigation-drawer
+      v-model="drawer"
+      fixed
+      clipped
+      dark
+      app
+    >
+    <v-subheader class="mt-3 yellow--text text--darken-1">1504 Robotics</v-subheader>
+      <v-list dense>
+        <v-list-tile v-for="item in items" :key="item.text" @click="">
+          <v-list-tile-action>
+            <v-icon>{{ item.icon }}</v-icon>
+          </v-list-tile-action>
+          <v-list-tile-content>
+            <v-list-tile-title>
+              <a href={{item.link}}>{{ item.text }}</a>
+            </v-list-tile-title>
+          </v-list-tile-content>
+        </v-list-tile>
+      </v-list>
+    </v-navigation-drawer>
           <v-layout
             column
             align-center
@@ -156,10 +201,12 @@
  <script>
    new Vue({
     el: '#app',
-    data () {
-      return {
-        title: 'Your Logo'
-      }
+    data: {
+      items: [
+        { icon: 'people', text: 'The Team', link: 'index.html'},
+        { icon: 'insert_photo', text: 'Gallery', link: '#'},
+        { icon: 'info', text: 'About', link: '#'}
+      ]
     }
   })
  </script>
